@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analyzer</title>
+
+    <link rel="stylesheet" href="css/resume.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Resume Analyzer</h1>
+
+        <div class="upload-box">
+
+            <h2>Upload Resume</h2>
+
+            <input type="file" id="resumeFile">
+
+            <button onclick="analyzeResume()">
+                Analyze Resume
+            </button>
+
+        </div>
+
+        <div class="result-box">
+
+            <h2>Analysis Result</h2>
+
+            <p id="result">
+                Resume feedback will appear here.
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="js/resume.js"></script>
+
+</body>
+</html>

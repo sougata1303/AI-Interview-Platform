@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Preparation</title>
+
+    <link rel="stylesheet" href="css/exam.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- TITLE -->
+        <h1>📚 Exam Preparation</h1>
+
+        <!-- SETUP SECTION -->
+        <div class="setup-box">
+
+            <h2>Exam Setup</h2>
+
+            <select id="company">
+                <option>TCS</option>
+                <option>Infosys</option>
+                <option>Wipro</option>
+                <option>Accenture</option>
+            </select>
+
+            <select id="category">
+                <option>Quantitative Aptitude</option>
+                <option>Logical Reasoning</option>
+                <option>Verbal Ability</option>
+            </select>
+
+            <button onclick="generateExam()" class="start-btn">
+                Start Exam
+            </button>
+
+        </div>
+
+        <!-- PROGRESS SECTION -->
+        <div class="progress-box">
+
+            <div class="progress-info">
+                <span id="question-count">Question 0/0</span>
+                <span id="current-score">Score: 0</span>
+            </div>
+
+            <div class="progress-bar">
+                <div id="progress-fill"></div>
+            </div>
+
+        </div>
+
+        <!-- QUESTION SECTION -->
+        <div class="question-box">
+
+            <h2>Question</h2>
+
+            <p id="question">
+                Your question will appear here.
+            </p>
+
+        </div>
+
+        <!-- ANSWER SECTION -->
+        <div class="answer-box">
+
+            <h2>Your Answer</h2>
+
+            <input
+                type="text"
+                id="answer"
+                placeholder="Enter your answer"
+            >
+
+            <button onclick="submitAnswer()" class="submit-btn">
+                Submit Answer
+            </button>
+
+        </div>
+
+        <!-- FEEDBACK SECTION -->
+        <div class="feedback-box">
+
+            <h2>Result</h2>
+
+            <p id="feedback">
+                Your result will appear here.
+            </p>
+
+        </div>
+
+        <!-- RESTART BUTTON -->
+        <button onclick="restartExam()" class="start-btn">
+            Restart Exam
+        </button>
+
+    </div>
+
+    <script src="js/exam.js"></script>
+
+</body>
+</html>

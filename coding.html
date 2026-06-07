@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Practice</title>
+
+    <link rel="stylesheet" href="css/coding.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Coding Practice</h1>
+
+        <div class="setup-box">
+
+            <h2>Select Difficulty</h2>
+
+            <select id="difficulty">
+
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+
+            </select>
+
+            <button onclick="generateQuestion()">
+                Generate Question
+            </button>
+
+        </div>
+
+        <div class="question-box">
+
+            <h2>Coding Question</h2>
+
+            <p id="question">
+                Your coding question will appear here.
+            </p>
+
+        </div>
+
+        <div class="code-box">
+
+            <h2>Your Solution</h2>
+
+            <textarea
+                id="code"
+                placeholder="Write your code here..."
+            ></textarea>
+
+            <button onclick="checkCode()">
+                Submit Code
+            </button>
+
+        </div>
+
+        <div class="feedback-box">
+
+            <h2>Feedback</h2>
+
+            <p id="feedback">
+                Feedback will appear here.
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="js/coding.js"></script>
+
+</body>
+</html>

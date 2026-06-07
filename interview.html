@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Simulator</title>
+
+    <link rel="stylesheet" href="css/interview.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1> AI Interview Simulator</h1>
+
+        <div class="setup-box">
+
+    <h2>Interview Setup</h2>
+
+    <select id="company">
+        <option>TCS</option>
+        <option>Infosys</option>
+        <option>Google</option>
+    </select>
+
+    <select id="role">
+        <option>Frontend Developer</option>
+        <option>Backend Developer</option>
+        <option>Data Analyst</option>
+    </select>
+
+    <select id="difficulty">
+        <option>Easy</option>
+        <option>Medium</option>
+        <option>Hard</option>
+    </select>
+
+    <button class="start-btn" onclick="startInterview()">
+        Start Interview
+    </button>
+
+</div>
+        <div class="progress-box">
+
+           <div class="progress-info">
+
+            <span id="question-count">
+            Question 0/0
+            </span>
+
+            <span id="current-score">
+            Score: 0
+           </span>
+
+           </div>
+
+        <div class="progress-bar">
+
+        <div id="progress-fill"></div>
+
+         </div>
+
+    </div>
+
+        <div class="question-box">
+
+            <h2>Interview Question</h2>
+
+            <p id="question">
+            Your interview question will appear here.
+            </p>
+
+        </div>
+
+        <div class="answer-box">
+
+            <h2>Your Answer</h2>
+
+            <textarea
+               id="answer"
+               placeholder="Type your answer here..."
+            ></textarea>
+
+            <button class="submit-btn" onclick="checkAnswer()">
+            Submit Answer
+            </button>
+
+        </div>
+
+        <div class="feedback-box">
+
+            <h2>AI Feedback</h2>
+
+            <p id="feedback">
+            Feedback and score will appear here.
+            </p>
+
+        </div>
+        <div class="restart-section">
+
+            <button class="restart-btn"
+            onclick="restartInterview()">
+            Restart Interview
+            </button>
+
+        </div>
+
+    </div>
+    <script src="js/interview.js"></script>
+
+</body>
+</html>
