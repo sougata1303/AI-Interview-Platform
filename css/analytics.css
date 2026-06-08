@@ -1,62 +1,149 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+/* Color Palette Matching the InterviewAI Workspace */
+:root {
+    --bg-base: #0a0f1d;
+    --bg-surface: #121829;
+    --bg-card: #1b2336;
+    --bg-accent: #7c4dff;
+    --text-primary: #ffffff;
+    --text-muted: #8fa0dd;
+    --border-color: #263554;
+    
+    --color-blue: #4385ff;
+    --color-green: #00e676;
+    --color-gold: #ffc400;
+    --color-red: #ff5252;
 }
 
-body{
-    background:#0f172a;
-    color:white;
-    padding:40px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-.container{
-    max-width:1200px;
-    margin:auto;
+body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
 }
 
-h1{
-    text-align:center;
-    margin-bottom:40px;
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-.stats-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    margin-bottom:30px;
+.analytics-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.4rem;
 }
 
-.card{
-    background:#1e293b;
-    padding:30px;
-    text-align:center;
-    border-radius:12px;
-    border:1px solid #334155;
+.analytics-header p {
+    color: var(--text-muted);
+    font-size: 1rem;
 }
 
-.card h2{
-    color:#3b82f6;
-    margin-bottom:10px;
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
 }
 
-.performance-box{
-    background:#1e293b;
-    padding:25px;
-    border-radius:12px;
-    margin-bottom:25px;
-    border:1px solid #334155;
+.card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
 }
 
-.performance-box h2{
-    margin-bottom:15px;
+.card h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #4385ff; /* Highlights the key statistical values in light blue */
+    margin-bottom: 0.2rem;
 }
 
-.performance-box ul{
-    padding-left:20px;
+.card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
-.performance-box li{
-    margin-bottom:10px;
+.icon-box {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.icon-box.blue { background: rgba(67, 133, 255, 0.1); color: var(--color-blue); }
+.icon-box.purple { background: rgba(124, 77, 255, 0.1); color: var(--bg-accent); }
+.icon-box.green { background: rgba(0, 230, 118, 0.1); color: var(--color-green); }
+.icon-box.gold { background: rgba(255, 196, 0, 0.1); color: var(--color-gold); }
+
+.performance-box {
+    background-color: var(--bg-surface);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.performance-box.critical-box { border: 1px solid rgba(255, 82, 82, 0.2); }
+.performance-box.structural-box { border: 1px solid rgba(124, 77, 255, 0.2); }
+
+.box-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.box-title h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.critical-box .box-title i { color: var(--color-red); }
+.structural-box .box-title i { color: var(--bg-accent); }
+
+.analytics-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.analytics-list li {
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #e2e8f0;
+}
+
+/* Bullet item icons */
+.critical-box .analytics-list li::before {
+    content: "•";
+    color: var(--color-red);
+    font-size: 1.5rem;
+    line-height: 0;
+}
+
+.structural-box .analytics-list li::before {
+    content: "•";
+    color: var(--color-green);
+    font-size: 1.5rem;
+    line-height: 0;
 }

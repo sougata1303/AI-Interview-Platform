@@ -1,97 +1,459 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+/* Core Palette Configurations & Resets */
+:root {
+    --bg-base: #0a0f1d;
+    --bg-surface: #121829;
+    --bg-card: #1b2336;
+    --bg-accent: #7c4dff;
+    --bg-accent-hover: #6533ff;
+    --text-primary: #ffffff;
+    --text-muted: #8fa0dd;
+    --border-color: #263554;
+    --sidebar-width: 260px;
 }
 
-body{
-    display:flex;
-    background:#0f172a;
-    color:white;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Sidebar */
-
-.sidebar{
-    width:250px;
-    height:100vh;
-    background:#1e293b;
-    padding:30px 20px;
-    position:fixed;
+body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    height: 100vh;
 }
 
-.sidebar h2{
-    color:#3b82f6;
-    margin-bottom:40px;
-    text-align:center;
+/* App Container Layout */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
 }
 
-.sidebar ul{
-    list-style:none;
+/* Sidebar Styling */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    position: fixed;
+    height: 100vh;
+    z-index: 10;
 }
 
-.sidebar ul li{
-    padding:15px;
-    margin-bottom:10px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:0.3s;
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4385ff;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.5px;
 }
 
-.sidebar ul li:hover{
-    background:#334155;
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1;
 }
 
-/* Main Content */
-
-.main-content{
-    margin-left:250px;
-    width:100%;
-    padding:40px;
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.header{
-    margin-bottom:40px;
+.nav-item:hover, .nav-item.active {
+    color: var(--text-primary);
+    background-color: var(--bg-card);
 }
 
-.header h1{
-    margin-bottom:10px;
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #ff5252;
+    text-decoration: none;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    margin-top: auto;
+    transition: background 0.2s;
 }
 
-.header p{
-    color:#cbd5e1;
+.logout-btn:hover {
+    background-color: rgba(255, 82, 82, 0.1);
 }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
+/* Main View Frame Layout */
+.main-content {
+    margin-left: var(--sidebar-width);
+    flex-grow: 1;
+    padding: 2.5rem;
+    max-width: 1400px;
+    width: calc(100% - var(--sidebar-width));
+}
+.embedded-view-frame {
+    width: 100%;
+    height: 85vh; /* Sets the iframe height to 85% of the viewport height */
+    border: none;
+    background-color: transparent;
+    display: block;
+    overflow-y: auto; /* Adds a clean inner scrollbar if content overflows */
 }
 
-.card{
-    background:#1e293b;
-    padding:30px;
-    border-radius:12px;
-    border:1px solid #334155;
-    transition:0.3s;
-    cursor:pointer;
+/* Ensures the active view takes up the full grid width */
+#analytics.content-view.active {
+    display: block;
+    width: 100%;
+}
+.content-view {
+    display: none;
+    animation: fadeIn 0.3s ease-out forwards;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    border-color:#3b82f6;
+.content-view.active {
+    display: block;
 }
 
-.card h3{
-    margin-bottom:15px;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.card p{
-    color:#cbd5e1;
+/* Welcome Segment Header */
+.welcome-header h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
 }
 
-.card-link{
-    text-decoration:none;
-    color:white;
+.welcome-header p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Productivity Component Split Grid (Timer & Scheduler Side by Side) */
+.productivity-section {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.timer-widget, .planner-widget {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.timer-widget h2, .planner-widget h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Pomodoro Specific Interface Elements */
+.timer-presets {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.preset-btn {
+    background-color: #171e30;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.preset-btn:hover {
+    background-color: var(--bg-card);
+}
+
+.preset-btn.active {
+    background-color: var(--bg-accent);
+    border-color: var(--bg-accent);
+    box-shadow: 0 0 12px rgba(124, 77, 255, 0.4);
+}
+
+.timer-display-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.timer-setup {
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+.timer-setup label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.timer-setup select {
+    width: 100%;
+    background-color: #171e30;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.75rem;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.timer-circle-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.timer-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
+}
+
+#timeDisplay {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.timer-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.timer-controls button {
+    background-color: #171e30;
+    border: none;
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.timer-controls button:hover {
+    background-color: var(--bg-card);
+}
+
+.timer-controls button.play-btn {
+    background-color: var(--bg-accent);
+    width: 50px;
+    height: 50px;
+}
+
+.timer-controls button.play-btn:hover {
+    background-color: var(--bg-accent-hover);
+}
+
+/* Study Planner Tracker & Checklist Elements */
+.progress-container {
+    margin-bottom: 1.5rem;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 8px;
+    background-color: #171e30;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4385ff, var(--bg-accent));
+    border-radius: 4px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.todo-input-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.todo-input-group input {
+    flex-grow: 1;
+    background-color: #171e30;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.todo-input-group input:focus {
+    border-color: var(--bg-accent);
+}
+
+.todo-input-group button {
+    background-color: var(--bg-accent);
+    border: none;
+    color: white;
+    padding: 0 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.todo-input-group button:hover {
+    background-color: var(--bg-accent-hover);
+}
+
+.todo-list {
+    list-style: none;
+    max-height: 220px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-right: 0.25rem;
+}
+
+.todo-list::-webkit-scrollbar {
+    width: 4px;
+}
+.todo-list::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 2px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #171e30;
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.todo-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+}
+
+.todo-item input[type="checkbox"] {
+    accent-color: var(--bg-accent);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.todo-text {
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.delete-task-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.delete-task-btn:hover {
+    color: #ff5252;
+}
+
+/* Responsive Media Handling */
+@media (max-width: 1024px) {
+    .productivity-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+        padding: 2rem 0.5rem;
+        align-items: center;
+    }
+    .logo {
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+    .nav-item {
+        justify-content: center;
+        padding: 0.85rem;
+    }
+    .nav-item i {
+        font-size: 1.2rem;
+    }
+    .nav-item span, .sidebar .logo {
+        display: none; /* Icon-only Mode */
+    }
+    .main-content {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+        padding: 1.5rem;
+    }
+    .timer-display-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }

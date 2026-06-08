@@ -4,134 +4,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InterviewAI Dashboard</title>
-
     <link rel="stylesheet" href="css/dashboard.css">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Sidebar -->
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">InterviewAI</div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-target="dashboard"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <a href="#" class="nav-item" data-target="ai-interview"><i class="fa-solid fa-robot"></i> AI Interview</a>
+                <a href="#" class="nav-item" data-target="exam-prep"><i class="fa-solid fa-book-open"></i> Exam Prep</a>
+                <a href="#" class="nav-item" data-target="coding-practice"><i class="fa-solid fa-code"></i> Coding Practice</a>
+                <a href="#" class="nav-item" data-target="resume-analyzer"><i class="fa-solid fa-file-invoice"></i> Resume Analyzer</a>
+                <a href="#" class="nav-item" data-target="analytics"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+                <a href="#" class="nav-item" data-target="profile"><i class="fa-solid fa-user"></i> Profile</a>
+            </nav>
+            <a href="#" class="logout-btn" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </aside>
 
-    <div class="sidebar">
+        <main class="main-content">
+            
+            <section id="dashboard" class="content-view active">
+                <div class="welcome-header">
+                    <h1>Welcome User</h1>
+                    <p>Continue your preparation journey.</p>
+                </div>
 
-        <h2>InterviewAI</h2>
+                <div class="productivity-section">
+                    
+                    <div class="timer-widget">
+                        <h2>Focus Timer</h2>
+                        <p class="subtitle">Customize your study intervals and track sessions automatically.</p>
+                        
+                        <div class="timer-presets">
+                            <button class="preset-btn active" data-time="1500">Work Presets</button>
+                            <button class="preset-btn" data-time="300">Short Break</button>
+                            <button class="preset-btn" data-time="custom">Custom Time</button>
+                        </div>
 
-        <ul>
+                        <div class="timer-display-container">
+                            <div class="timer-setup">
+                                <label for="subjectSelect">Subject Association</label>
+                                <select id="subjectSelect">
+                                    <option value="General Focus">General Focus</option>
+                                    <option value="Coding Practice">Coding Practice</option>
+                                    <option value="Exam Revision">Exam Revision</option>
+                                    <option value="Interview prep">Interview Prep</option>
+                                </select>
+                            </div>
 
-            <li> Dashboard</li>
+                            <div class="timer-circle-wrapper">
+                                <div class="timer-circle">
+                                    <span id="timeDisplay">25:00</span>
+                                </div>
+                                <div class="timer-controls">
+                                    <button id="resetTimerBtn" title="Reset"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+                                    <button id="startTimerBtn" class="play-btn" title="Start/Pause"><i class="fa-solid fa-play"></i></button>
+                                    <button id="skipTimerBtn" title="Skip"><i class="fa-solid fa-forward-step"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <li> AI Interview</li>
+                    <div class="planner-widget">
+                        <h2>Study Planner & Progress</h2>
+                        <div class="progress-container">
+                            <div class="progress-info">
+                                <span>Daily Target Completion</span>
+                                <span id="progressPercent">0%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div id="progressBar" class="progress-bar-fill" style="width: 0%;"></div>
+                            </div>
+                        </div>
 
-            <li> Exam Prep</li>
+                        <form id="todoForm" class="todo-input-group">
+                            <input type="text" id="todoInput" placeholder="Add a specific study objective..." required>
+                            <button type="submit"><i class="fa-solid fa-plus"></i></button>
+                        </form>
 
-            <li> Coding Practice</li>
+                        <ul id="todoList" class="todo-list">
+                            </ul>
+                    </div>
 
-            <li> Resume Analyzer</li>
+                </div>
+            </section>
 
-            <li> Analytics</li>
+            <section id="ai-interview" class="content-view">
+                <h1>AI Interview Panel</h1>
+                <p>Welcome to your real-time simulator. Choose your technical track or company profile to begin live coding and behavioral evaluation rounds.</p>
+            </section>
 
-            <li> Profile</li>
+            <section id="exam-prep" class="content-view">
+                <h1>Exam Preparation</h1>
+                <p>Access structured assessment sections for Quantitative Aptitude, Logical Reasoning, Verbal Capacity, and Core CS Fundamentals.</p>
+            </section>
 
-            <li> Logout</li>
+            <section id="coding-practice" class="content-view">
+                <h1>Coding Practice Hub</h1>
+                <p>Solve dynamic problems across array manipulation, dynamic programming, strings, and graph trees using your local compiler environments.</p>
+            </section>
 
-        </ul>
+            <section id="resume-analyzer" class="content-view">
+                
+                <h1>Resume Analyzer Engine</h1>
+                <p>Upload your latest CV to parsed fields to extract structural flaws, semantic alignment scores, and target keyword matches instantly.</p>
+            </section>
 
+            <section id="analytics" class="content-view">
+                <iframe src="analytics.html" id="analyticsFrame" class="embedded-view-frame" title="Performance Analytics"></iframe>
+                <h1>Performance Analytics Dashboard</h1>
+                <p>Review comprehensive breakdowns of your mock interviews, accuracy graphs over time, and module completion ratios.</p>
+            </section>
+
+            <section id="profile" class="content-view">
+                <h1>Account Profile Settings</h1>
+                <p>Manage authentication details, subscription plans, tracking metrics, and technical target preferences.</p>
+            </section>
+
+        </main>
     </div>
 
-    <!-- Main Content -->
-
-    <div class="main-content">
-
-        <div class="header">
-
-            <h1 id="welcomeUser">Welcome User</h1>
-           
-
-
-            <p>
-                Continue your preparation journey.
-            </p>
-
-        </div>
-
-        <div class="cards">
-
-            <a href="interview.html" class="card-link">
-             <div class="card">
-                   <h3> AI Interview</h3>
-                   <p>Practice company-specific interviews.</p>
-             </div>
-            </a>
-
-            <a href="exam.html" class="card-link">
-
-        <div class="card">
-
-           <h3>Exam Prep</h3>
-
-           <p>
-            Aptitude, reasoning and verbal practice.
-           </p>
-
-        </div>
-
-            </a>
-
-        <a href="coding.html" class="card-link">
-
-        <div class="card">
-
-           <h3>Coding</h3>
-
-            <p>Prepare for coding rounds.</p>
-
-        </div>
-
-        </a>
-
-        <a href="resume.html" class="card-link">
-
-        <div class="card">
-
-            <h3>Resume</h3>
-
-            <p>Analyze and improve your resume.  </p>
-            
-      
-
-        </div>
-
-        </a>
-
-        <a href="analytics.html" class="card-link">
-
-        <div class="card">
-
-              <h3>Analytics</h3>
-
-              <p>Track progress and performance.</p>
-            
-        
-
-        </div>
-
-        </a>
-
-        <a href="profile.html" class="card-link">
-
-         <div class="card">
-
-             <h3>Profile</h3>
-
-            <p>Manage your account settings.</p>
-            
-        </div>
-
-    </a>
-
-        </div>
-
-    </div>
     <script src="js/dashboard.js"></script>
-
 </body>
 </html>

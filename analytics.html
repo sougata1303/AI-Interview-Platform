@@ -3,67 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytics Dashboard</title>
-
+    <title>Performance Analytics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/analytics.css">
 </head>
 <body>
 
     <div class="container">
-
-        <h1>Performance Analytics</h1>
+        
+        <header class="analytics-header">
+            <h1>Performance Analytics</h1>
+            <p>Track your automated metrics, weak points, and action items over time.</p>
+        </header>
 
         <div class="stats-container">
 
             <div class="card">
-                <h2>15</h2>
-                <p>Interviews Completed</p>
+                <div class="icon-box blue"><i class="fa-solid fa-square-poll-vertical"></i></div>
+                <div class="card-data">
+                    <h2 id="interviewsCompleted">0</h2>
+                    <p>Interviews Completed</p>
+                </div>
             </div>
 
             <div class="card">
-                <h2>7.8/10</h2>
-                <p>Average Interview Score</p>
+                <div class="icon-box purple"><i class="fa-solid fa-star-half-stroke"></i></div>
+                <div class="card-data">
+                    <h2 id="averageScore">0.0/10</h2>
+                    <p>Average Interview Score</p>
+                </div>
             </div>
 
             <div class="card">
-                <h2>82%</h2>
-                <p>Exam Accuracy</p>
+                <div class="icon-box green"><i class="fa-solid fa-bullseye"></i></div>
+                <div class="card-data">
+                    <h2 id="examAccuracy">0%</h2>
+                    <p>Exam Accuracy</p>
+                </div>
             </div>
 
             <div class="card">
-                <h2>78/100</h2>
-                <p>Resume ATS Score</p>
+                <div class="icon-box gold"><i class="fa-solid fa-file-shield"></i></div>
+                <div class="card-data">
+                    <h2 id="atsScore">0/100</h2>
+                    <p>Resume ATS Score</p>
+                </div>
             </div>
 
         </div>
 
-        <div class="performance-box">
-
-            <h2>Weak Areas</h2>
-
-            <ul>
-                <li>Operating Systems</li>
-                <li>DBMS</li>
-                <li>Logical Reasoning</li>
-            </ul>
-
+        <div class="performance-box critical-box">
+            <div class="box-title">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h2>Weak Areas</h2>
+            </div>
+            <ul id="weakAreasList" class="analytics-list">
+                </ul>
         </div>
 
-        <div class="performance-box">
-
-            <h2>Improvement Suggestions</h2>
-
-            <ul>
-                <li>Practice DBMS interview questions.</li>
-                <li>Improve aptitude speed.</li>
-                <li>Work on communication skills.</li>
-            </ul>
-
+        <div class="performance-box structural-box">
+            <div class="box-title">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h2>Improvement Suggestions</h2>
+            </div>
+            <ul id="suggestionsList" class="analytics-list">
+                </ul>
         </div>
 
     </div>
 
     <script src="js/analytics.js"></script>
-
 </body>
 </html>
