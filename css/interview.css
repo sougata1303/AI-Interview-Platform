@@ -1,114 +1,175 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+/* Unified Interview AI Aesthetics */
+:root {
+    --bg-base: #0a0f1d;
+    --bg-surface: #121829;
+    --bg-card: #1b2336;
+    --bg-accent: #7c4dff;
+    --bg-accent-hover: #6533ff;
+    --text-primary: #ffffff;
+    --text-muted: #8fa0dd;
+    --border-color: #263554;
 }
 
-body{
-    background:#0f172a;
-    color:white;
-    padding:40px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-.container{
-    max-width:1000px;
-    margin:auto;
+body {
+    background: transparent;
+    color: var(--text-primary);
+    padding: 10px 0;
 }
 
-h1{
-    text-align:center;
-    margin-bottom:40px;
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+h1 {
+    display: none; /* Hide redundant page title when embedded in SPA dashboard */
 }
 
 .setup-box,
 .question-box,
 .answer-box,
-.feedback-box{
-    background:#1e293b;
-    padding:25px;
-    border-radius:12px;
-    margin-bottom:25px;
-    border:1px solid #334155;
+.feedback-box,
+.progress-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-select{
-    width:100%;
-    padding:12px;
-    margin-bottom:15px;
-    border:none;
-    border-radius:6px;
+.setup-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) auto;
+    gap: 1rem;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .setup-box {
+        grid-template-columns: 1fr;
+    }
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    background: #171e30;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+select:focus {
+    border-color: var(--bg-accent);
 }
 
 .start-btn,
-.submit-btn{
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:12px 25px;
-    border-radius:6px;
-    cursor:pointer;
+.submit-btn {
+    background: var(--bg-accent);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    height: 100%;
 }
 
-textarea{
-    width:100%;
-    height:150px;
-    margin-bottom:15px;
-    padding:15px;
-    border:none;
-    border-radius:8px;
-    resize:none;
+.start-btn:hover,
+.submit-btn:hover {
+    background: var(--bg-accent-hover);
+    box-shadow: 0 0 12px rgba(124, 77, 255, 0.4);
 }
 
-h2{
-    margin-bottom:15px;
+textarea {
+    width: 100%;
+    height: 150px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #171e30;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+    resize: none;
+    outline: none;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
-p{
-    color:#cbd5e1;
+textarea:focus {
+    border-color: var(--bg-accent);
 }
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 /* Progress Section */
-
-.progress-box{
-    background:#1e293b;
-    padding:20px;
-    border-radius:12px;
-    margin-bottom:20px;
-    border:1px solid #334155;
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
 }
 
-.progress-info{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:10px;
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #171e30;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
 }
 
-.progress-bar{
-    width:100%;
-    height:12px;
-    background:#334155;
-    border-radius:20px;
-    overflow:hidden;
-}
-
-#progress-fill{
-    width:0%;
-    height:100%;
-    background:#2563eb;
-    transition:0.5s;
+#progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #4385ff, var(--bg-accent));
+    transition: width 0.4s ease;
 }
 
 /* Restart Button */
-
-.restart-section{
-    text-align:center;
+.restart-section {
+    text-align: center;
+    margin-top: 10px;
 }
 
-.restart-btn{
-    background:#dc2626;
-    color:white;
-    border:none;
-    padding:12px 25px;
-    border-radius:6px;
-    cursor:pointer;
+.restart-btn {
+    background: #ff5252;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.restart-btn:hover {
+    opacity: 0.9;
 }

@@ -1,9 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Component Context Inits
+    initUserSession();
     initNavigation();
     initPomodoroTimer();
     initStudyPlanner();
 });
+
+/**
+ * Check active session and personalize greeting
+ */
+function initUserSession() {
+    const userName = localStorage.getItem("userName");
+    if (!userName) {
+        // Redirection guard to login if no credentials
+        window.location.href = "login.html";
+        return;
+    }
+    
+    // Dynamically greeting the active user
+    const welcomeHeader = document.querySelector('.welcome-header h1');
+    if (welcomeHeader) {
+        welcomeHeader.textContent = `Welcome, ${userName}`;
+    }
+}
 
 /**
  * SPA View Router Context
@@ -24,6 +43,9 @@ function initNavigation() {
         logoutBtn.addEventListener('click', (e) => {
             e.preventDefault();
             alert('Logging out of your current session safely...');
+            localStorage.removeItem("userName");
+            localStorage.removeItem("userEmail");
+            window.location.href = "index.html";
         });
     }
 }
@@ -48,12 +70,22 @@ function switchView(viewId) {
         }
     });
     
-    // IFRAME FORCE REFRESH: Reloads data inside analytics.html on click
-    if (viewId === 'analytics') {
-        const iframe = document.getElementById('analyticsFrame');
+    // IFRAME FORCE REFRESH: Reloads data inside target iframe on click
+    const iframeIds = {
+        'ai-interview': 'interviewFrame',
+        'exam-prep': 'examFrame',
+        'coding-practice': 'codingFrame',
+        'resume-analyzer': 'resumeFrame',
+        'analytics': 'analyticsFrame',
+        'profile': 'profileFrame'
+    };
+    
+    if (iframeIds[viewId]) {
+        const iframe = document.getElementById(iframeIds[viewId]);
         if (iframe) {
-            // Re-assigning the source forces the iframe window lifecycle to run again cleanly
-            iframe.src = iframe.src; 
+            // Force reload by appending a cache-busting timestamp parameter
+            const baseUrl = iframe.src.split('?')[0];
+            iframe.src = `${baseUrl}?t=${Date.now()}`;
         }
     }
     

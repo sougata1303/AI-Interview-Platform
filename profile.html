@@ -4,53 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/profile.css?v=1.1">
 </head>
 <body>
 
     <div class="container">
 
         <div class="profile-card">
+            
+            <!-- Banner Cover with Premium Glass Effect Overlay -->
+            <div class="profile-banner">
+                <div class="banner-overlay"></div>
+            </div>
+            
+            <!-- Initials Avatar -->
+            <div class="profile-avatar" id="profileAvatar">U</div>
 
-            <h1>User Profile</h1>
+            <!-- View Mode -->
+            <div id="profileView" class="profile-view-section">
+                <h2 id="userName">User Name</h2>
+                <p id="userEmail">user@email.com</p>
 
-            <h2 id="userName">
-                User Name
-            </h2>
-
-            <p id="userEmail">
-                user@email.com
-            </p>
-
-            <div class="stats">
-
-                <div class="stat-box">
-                    <h3>15</h3>
-                    <p>Interviews</p>
+                <!-- Target Preferences Badges -->
+                <div class="profile-preferences">
+                    <span class="pref-badge target-role" title="Target Job Role">
+                        <i class="fa-solid fa-briefcase"></i> <span id="userRole">Frontend Developer</span>
+                    </span>
+                    <span class="pref-badge target-company" title="Target Company">
+                        <i class="fa-solid fa-building"></i> <span id="userCompany">Google</span>
+                    </span>
                 </div>
 
-                <div class="stat-box">
-                    <h3>82%</h3>
-                    <p>Exam Score</p>
+                <!-- Stats Grid with Premium Icons -->
+                <div class="stats">
+                    <div class="stat-box blue-stat">
+                        <div class="stat-icon"><i class="fa-solid fa-microphone-lines"></i></div>
+                        <div class="stat-content">
+                            <h3>15</h3>
+                            <p>Interviews</p>
+                        </div>
+                    </div>
+                    <div class="stat-box purple-stat">
+                        <div class="stat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <div class="stat-content">
+                            <h3>82%</h3>
+                            <p>Exam Score</p>
+                        </div>
+                    </div>
+                    <div class="stat-box green-stat">
+                        <div class="stat-icon"><i class="fa-solid fa-code"></i></div>
+                        <div class="stat-content">
+                            <h3>20</h3>
+                            <p>Coding Attempts</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="stat-box">
-                    <h3>20</h3>
-                    <p>Coding Attempts</p>
-                </div>
-
+                <button class="edit-btn" onclick="toggleEditMode(true)">
+                    <i class="fa-solid fa-user-pen"></i> Edit Profile
+                </button>
             </div>
 
-            <button onclick="editProfile()">
-                Edit Profile
-            </button>
+            <!-- Inline Edit Mode (Hidden by Default) -->
+            <div id="profileEdit" class="profile-edit-section" style="display: none;">
+                <h2>Edit Profile Settings</h2>
+                
+                <div class="form-group">
+                    <label for="editName"><i class="fa-solid fa-user"></i> Full Name</label>
+                    <input type="text" id="editName" placeholder="Enter full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editEmail"><i class="fa-solid fa-envelope"></i> Email Address</label>
+                    <input type="email" id="editEmail" placeholder="Enter email address" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editRole"><i class="fa-solid fa-briefcase"></i> Target Role</label>
+                        <select id="editRole">
+                            <option value="Frontend Developer">Frontend Developer</option>
+                            <option value="Backend Developer">Backend Developer</option>
+                            <option value="Data Analyst">Data Analyst</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editCompany"><i class="fa-solid fa-building"></i> Target Company</label>
+                        <select id="editCompany">
+                            <option value="TCS">TCS</option>
+                            <option value="Infosys">Infosys</option>
+                            <option value="Wipro">Wipro</option>
+                            <option value="Accenture">Accenture</option>
+                            <option value="Cognizant">Cognizant</option>
+                            <option value="Google">Google</option>
+                            <option value="Amazon">Amazon</option>
+                            <option value="Microsoft">Microsoft</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="edit-actions">
+                    <button class="cancel-btn" onclick="toggleEditMode(false)">
+                        <i class="fa-solid fa-xmark"></i> Cancel
+                    </button>
+                    <button class="save-btn" onclick="saveProfileChanges()">
+                        <i class="fa-solid fa-floppy-disk"></i> Save Changes
+                    </button>
+                </div>
+            </div>
 
         </div>
 
     </div>
 
-    <script src="js/profile.js"></script>
+    <script src="js/profile.js?v=1.1"></script>
 
 </body>
 </html>

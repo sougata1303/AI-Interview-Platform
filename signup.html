@@ -15,33 +15,37 @@
 
             <h1>Create Account</h1>
 
-            <form>
+            <form onsubmit="event.preventDefault(); signupUser();">
 
                 <input
                     type="text"
+                    id="name"
                     placeholder="Full Name"
                     required
                 >
 
                 <input
                     type="email"
+                    id="email"
                     placeholder="Email Address"
                     required
                 >
 
                 <input
                     type="password"
+                    id="password"
                     placeholder="Password"
                     required
                 >
 
                 <input
                     type="password"
+                    id="confirmPassword"
                     placeholder="Confirm Password"
                     required
                 >
 
-                <button class="signup-btn" onclick="signupUser()">
+                <button type="submit" class="signup-btn">
                  Sign Up
                 </button>
 
